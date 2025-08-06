@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import fetch from 'node-fetch';
+import serverless from 'serverless-http';
 
 const app = express();
 app.use(express.json());
@@ -43,5 +44,6 @@ app.get('/', (req, res) => {
   res.send('SMS backend is running!');
 });
 
-// ✅ Export app instead of app.listen()
+// ✅ Convert Express app to Vercel serverless function
+export const handler = serverless(app);
 export default app;
