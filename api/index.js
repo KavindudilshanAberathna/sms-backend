@@ -6,6 +6,10 @@ import serverless from 'serverless-http';
 const app = express();
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send('SMS backend is running!');
+});
+
 app.post('/send-sms', async (req, res) => {
   const { contact, message } = req.body;
 
@@ -40,9 +44,5 @@ app.post('/send-sms', async (req, res) => {
   }
 });
 
-app.get('/', (req, res) => {
-  res.send('SMS backend is running!');
-});
-
-// ✅ Important: Export for Vercel
+// ✅ This is the correct export for Vercel
 export default serverless(app);
