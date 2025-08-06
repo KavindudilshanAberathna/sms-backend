@@ -44,6 +44,5 @@ app.get('/', (req, res) => {
   res.send('SMS backend is running!');
 });
 
-// ✅ Convert Express app to Vercel serverless function
-export const handler = serverless(app);
-export default app;
+// ✅ Important: Export for Vercel
+export default serverless(app);
